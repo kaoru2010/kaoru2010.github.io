@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>会員登録フォームのDEMO</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+// モデル定義
+var Customer = Backbone.Model.extend({
+  defaults : {
+    "user_name" : "",
+    "user_name_kana" : "",
+    "tel" : "",
+    "postal_code" : "",
+    "address" : ""
+  },
+  urlRoot : "/demo-service/customers",
+});
+
+$(function() {
+  $("#submit-button").click(function(e) {
+    var customer = new Customer({
+       user_name: $('#user_name').val()
+       user_name_kana: $('#user_name_kana').val()
+       tel: $('#tel').val()
+       postal_code: $('#postal_code').val()
+       address: $('#address').val()
+    });
+    customer.save();
+  });
+});
+</script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">さんぷる</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">会員登録フォーム</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form>
+            <div class="form-group">
+              <label class="control-label" for="user_name">氏名</label>
+              <input type="text" placeholder="例）さんぷる　太郎" id="user_name" class="form-control"/>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="user_name_kana">フリガナ</label>
+              <input type="text" placeholder="例）サンプル　タロウ" id="user_name" class="form-control"/>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="tel">電話番号</label>
+              <input type="text" placeholder="例）090-xxxx-xxxx" id="tel" class="form-control"/>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="postal_code">郵便番号</label>
+              <input type="text" placeholder="例）000-0000" id="postal_code" class="form-control"/>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="address">住所</label>
+              <input type="text" placeholder="例）東京都千代田区" id="address" class="form-control"/>
+              <span class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" id="submit-button">送信</a>
+            </div>
+
+        </form>
+
+    </div>
+    <div id="footer">Copyright &copy; 2014 kaoru. All rights reserved.</div>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
